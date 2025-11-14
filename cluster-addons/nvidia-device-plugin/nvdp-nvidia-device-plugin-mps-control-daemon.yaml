@@ -13,7 +13,7 @@ metadata:
   name: nvdp-nvidia-device-plugin-mps-control-daemon
   namespace: nvidia-device-plugin
 spec:
-  revisionHistoryLimit: 10
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app.kubernetes.io/instance: nvdp
