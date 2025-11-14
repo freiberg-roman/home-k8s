@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-box
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev-box
+  template:
+    metadata:
+      labels:
+        app: dev-box
+    spec:
+      containers:
+        - name: dev-box
+          image: debian:trixie # This uses the Debian 13 (Trixie) image
+          # Keep the container running
+          command: ["/bin/sh", "-c", "sleep infinity"]
