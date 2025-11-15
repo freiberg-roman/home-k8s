@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: "git@github.com:freiberg-roman/home-k8s.git"
-    path: apps/dev-box
+    path: apps/devbox
     targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
