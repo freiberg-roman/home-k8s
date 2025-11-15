@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-flannel
+  namespace: argocd
+spec:
+  project: default
+  source:
+    # This is your repository URL
+    repoURL: "git@github.com:freiberg-roman/home-k8s.git"
+    # This is the path where you will store the flannel manifests
+    path: cluster-addons/kube-flannel
+    targetRevision: HEAD
+  destination:
+    # This points to the local cluster where Argo CD is running
+    server: "https://kubernetes.default.svc"
+    # This is the namespace where Flannel's resources are currently running
+    namespace: kube-flannel
+  syncPolicy:
+    # Automated sync is a good choice for critical cluster infrastructure like a CNI
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      # This ensures that if the namespace is ever deleted, Argo CD can recreate it
+      - CreateNamespace=true
