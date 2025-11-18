@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-flannel
+  name: cluster-infra
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: "git@github.com:freiberg-roman/home-k8s.git"
-    path: cluster-addons/kube-flannel
+    repoURL: "https://github.com/freiberg-roman/home-k8s.git"
+    path: cluster-addons
     targetRevision: HEAD
+    directory:
+      recurse: true
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: kube-flannel
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true

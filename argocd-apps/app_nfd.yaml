@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dev-box
+  name: node-feature-discovery
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: "git@github.com:freiberg-roman/home-k8s.git"
-    path: apps/devbox
-    targetRevision: HEAD
+    repoURL: https://kubernetes-sigs.github.io/node-feature-discovery/charts
+    chart: node-feature-discovery
+    targetRevision: 0.16.4
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: default
+    namespace: node-feature-discovery
   syncPolicy:
     automated:
       prune: true
