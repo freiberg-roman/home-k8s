@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/projectcalico/calico
-    targetRevision: v3.31.2
-    path: manifests
+    repoURL: "https://github.com/freiberg-roman/home-k8s.git"
+    targetRevision: HEAD
+    path: cluster-addons/calico-install
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
